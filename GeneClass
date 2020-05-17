@@ -1,0 +1,38 @@
+class Gene:
+    def __init__(self, speciesID, name, opAmount, ligands, alpha, betas, states, thresholds, logic, coeff):
+        self.speciesId = speciesID
+        self.speciesName = name
+
+        self.operatorCount = opAmount
+        self.alpha = alpha
+        self.betas = betas
+        self.operatorStates = states
+
+        self.thresholds = thresholds
+        self.logic = logic
+        self.operatorLigands = ligands
+        self.hillsCoeff = coeff
+
+    def logicFunc(self, opID, systemState):
+        return 1 if systemState[self.operatorLigands[opID]] >= self.thresholds[opID] else 0
+
+    def hill(self, opID, systemState):
+        c = (systemState[self.operatorLigands[opID]] / self.thresholds[opID]) ** self.hillsCoeff[opID]
+        return c / (1 + c)
+
+    def getOccupancy(self, opID, state, systemState):
+        if self.logic[opID]:
+            p = self.logicFunc(opID, systemState)
+        else:
+            p = self.hill(opID, systemState)
+        return p if state else 1 - p
+
+    def getDerivative(self, systemState):
+        rate = -self.alpha * systemState[self.speciesId]
+
+        for h in range(len(self.operatorStates)):
+            p = 1
+            for k in range(len(self.operatorStates[h])):
+                p *= self.getOccupancy(k, self.operatorStates[h][k], systemState)
+            rate += self.betas[h] * p
+        return rate
