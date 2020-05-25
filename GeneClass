@@ -1,5 +1,15 @@
+import json
+
+
 class Gene:
-    def __init__(self, speciesID, name, opAmount, ligands, alpha, betas, states, thresholds, logic, coeff):
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            if key == "filename":
+                with open("Genes/" + value) as json_file:
+                    data = json.load(json_file)
+                    self.__dict__ = data
+
+    def setup(self, speciesID, name, opAmount, ligands, alpha, betas, states, thresholds, logic, coeff):
         self.speciesId = speciesID
         self.speciesName = name
 
