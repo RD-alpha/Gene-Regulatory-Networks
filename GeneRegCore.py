@@ -1,17 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from GeneClass import *
+import json
 
 
 def setup():
     species = np.ndarray(concCount, dtype=np.object)
-    # args: speciesId, operatorCount, alpha, betas, possible operator states, thresholds, step behaviour (True)
-    # or michaelis behaviour (False), species which binds to operators, hill coefficient
-    species[1] = Gene(1, speciesNames[1], 1, [0], 0.05, [0.5], [[True]], [1], [True], [2])
-    species[2] = Gene(2, speciesNames[2], 1, [1], 0.03, [0.5], [[True]], [10], [False], [2])
-    species[3] = Gene(3, speciesNames[3], 2, [1, 2], 0.05, 0.3 * np.array([1]), [[True, False]], [10, 5],
-                           [False, False], [2, 8])
-
+    for h in range(list(signals).count(True), len(speciesNames)):
+        species[h] = Gene(filename="gene" + speciesNames[h] + ".txt")
     return species
 
 
