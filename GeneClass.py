@@ -9,19 +9,8 @@ class Gene:
                     data = json.load(json_file)
                     self.__dict__ = data
 
-    def setup(self, speciesID, name, opAmount, ligands, alpha, betas, states, thresholds, logic, coeff):
-        self.speciesId = speciesID
-        self.speciesName = name
-
-        self.operatorCount = opAmount
-        self.alpha = alpha
-        self.betas = betas
-        self.operatorStates = states
-
-        self.thresholds = thresholds
-        self.logic = logic
-        self.operatorLigands = ligands
-        self.hillsCoeff = coeff
+    def setID(self,id):
+        self.speciesId = id
 
     def logicFunc(self, opID, systemState):
         return 1 if systemState[self.operatorLigands[opID]] >= self.thresholds[opID] else 0
