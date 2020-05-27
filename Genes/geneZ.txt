@@ -1,0 +1,1 @@
+{"operatorLigands": [1, 2], "betas": [0.3], "speciesName": "Z", "thresholds": [8, 5], "alpha": 0.05, "operatorCount": 2, "operatorStates": [[true, false]], "logic": [true, true], "hillsCoeff": [2, 8], "speciesId": 3}
