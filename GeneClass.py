@@ -3,14 +3,24 @@ import json
 
 class Gene:
     def __init__(self, **kwargs):
+        self.operatorLigands = None
+        self.thresholds = None
+        self.hillsCoeff = None
+        self.alpha = None
+        self.logic = None
+        self.speciesId = None
+        self.operatorStates = None
+        self.betas = None
+
         for key, value in kwargs.items():
             if key == "filename":
                 with open("Genes/" + value) as json_file:
                     data = json.load(json_file)
                     self.__dict__ = data
 
-    def setID(self,id):
-        self.speciesId = id
+    def save(self, path):
+        with open("Genes/" + path, 'w') as outfile:
+            json.dump(self.__dict__, outfile, indent=4)
 
     def logicFunc(self, opID, systemState):
         return 1 if systemState[self.operatorLigands[opID]] >= self.thresholds[opID] else 0

@@ -1,1 +1,31 @@
-{"operatorLigands": [1, 2], "betas": [0.3], "speciesName": "Z", "thresholds": [8, 5], "alpha": 0.05, "operatorCount": 2, "operatorStates": [[true, false]], "logic": [true, true], "hillsCoeff": [2, 8], "speciesId": 3}
+{
+    "speciesName": "Z",
+    "betas": [
+        0.3
+    ],
+    "operatorLigands": [
+        1,
+        2
+    ],
+    "logic": [
+        true,
+        true
+    ],
+    "hillsCoeff": [
+        2,
+        8
+    ],
+    "alpha": 0.05,
+    "operatorCount": 2,
+    "thresholds": [
+        8,
+        5
+    ],
+    "operatorStates": [
+        [
+            true,
+            false
+        ]
+    ],
+    "speciesId": 3
+}

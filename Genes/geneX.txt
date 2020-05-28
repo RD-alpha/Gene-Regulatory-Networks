@@ -1,1 +1,26 @@
-{"operatorLigands": [0], "betas": [0.5], "speciesName": "X", "thresholds": [1], "alpha": 0.05, "operatorCount": 1, "operatorStates": [[true]], "logic": [true], "hillsCoeff": [2], "speciesId": 1}
+{
+    "speciesName": "X",
+    "betas": [
+        0.5
+    ],
+    "operatorLigands": [
+        0
+    ],
+    "logic": [
+        true
+    ],
+    "hillsCoeff": [
+        2
+    ],
+    "alpha": 0.05,
+    "operatorCount": 1,
+    "thresholds": [
+        1
+    ],
+    "operatorStates": [
+        [
+            true
+        ]
+    ],
+    "speciesId": 1
+}
