@@ -1,6 +1,23 @@
 import json
 
 
+def saveNetwork(geneList, path):
+    data = [None] * len(geneList)
+    for i in range(len(geneList)):
+        data[i] = geneList[i].__dict__
+    with open("GeneNetworks/" + path + ".txt", "w") as json_file:
+        json.dump(data, json_file, indent=4)
+
+
+def loadNetwork(path):
+    with open("GeneNetworks/" + path + ".txt") as json_file:
+        data = json.load(json_file)
+        output = [None]*len(data)
+        for i in range(len(data)):
+            output[i] = Gene(obj=data[i])
+    return output
+
+
 class Gene:
     def __init__(self, **kwargs):
         self.operatorLigands = None
@@ -14,12 +31,14 @@ class Gene:
 
         for key, value in kwargs.items():
             if key == "filename":
-                with open("Genes/" + value) as json_file:
+                with open("GeneNetworks/" + value + ".txt") as json_file:
                     data = json.load(json_file)
                     self.__dict__ = data
+            elif key == "obj":
+                self.__dict__ = value
 
     def save(self, path):
-        with open("Genes/" + path, 'w') as outfile:
+        with open("GeneNetworks/" + path + ".txt", 'w') as outfile:
             json.dump(self.__dict__, outfile, indent=4)
 
     def logicFunc(self, opID, systemState):

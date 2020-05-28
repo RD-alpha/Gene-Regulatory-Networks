@@ -27,7 +27,7 @@ def setup():
     # save is the folder in which to save output image e.g. "Genes/NegFFL/NegFFL.png" set to -1 if no saving wanted
     step = 0.1
     endTime = 900
-    saveFile = "GeneNetworks/NegFFL/NegFFLIncomplete.png"
+    saveFile = "GeneNetworks/NegFFL/NegFFL.png"
     plotInfo = [[0], [1,2,3]]
 
     # -------------
@@ -49,7 +49,7 @@ def setup():
     # species[n] = Gene(filename="geneX") loads from file /GeneNetworks/geneX.txt
     # species[n].save("geneX") saves gene to file GeneNetworks/geneX for later use
     # saveNetwork(species,"LIFO") will save any changes done to the network after loading to GeneNetworks/LIFO.txt
-    species = loadNetwork("NegFFL/NegFFLIncomplete")
-    saveNetwork(species, "NegFFL/NegFFLIncomplete")
+    species = loadNetwork("NegFFL/NegFFL")
+    saveNetwork(species, "NegFFL/NegFFL")
 
     return step, endTime, saveFile, speciesNames, species, concentrations, plotInfo

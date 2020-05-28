@@ -11,6 +11,10 @@ def event(t, systemState):
         systemState[0] = 0
     elif t == 200:
         systemState[0] = 1
+    elif t == 500:
+        systemState[0] = 0
+    elif t == 525:
+        systemState[0] = 1
     elif t == 700:
         systemState[0] = 0
 
@@ -27,7 +31,7 @@ def setup():
     # save is the folder in which to save output image e.g. "Genes/NegFFL/NegFFL.png" set to -1 if no saving wanted
     step = 0.1
     endTime = 900
-    saveFile = "GeneNetworks/NegFFL/NegFFLIncomplete.png"
+    saveFile = "GeneNetworks/PosFFL/PosFFL.png"
     plotInfo = [[0], [1,2,3]]
 
     # -------------
@@ -39,8 +43,11 @@ def setup():
     speciesNames = np.array(["S", "X", "Y", "Z"])
     concentrations = np.array([0, 0, 0, 0])
 
-    # species is initialized here, it holds an array of all genes, number is the amount of genes
-    species = np.full(3, None)
+    # signals holds boolean of whether a species is a signal (True) or a gene product (False)
+    # signals = np.array([True, False, False, False, False])
+
+    # species is initialized here, it holds an array of all genes
+    # species = np.full(len(speciesNames[~signals]), None)
 
     # genes are assigned to species
     # species[n] = Gene() initializes an empty gene
@@ -49,7 +56,7 @@ def setup():
     # species[n] = Gene(filename="geneX") loads from file /GeneNetworks/geneX.txt
     # species[n].save("geneX") saves gene to file GeneNetworks/geneX for later use
     # saveNetwork(species,"LIFO") will save any changes done to the network after loading to GeneNetworks/LIFO.txt
-    species = loadNetwork("NegFFL/NegFFLIncomplete")
-    saveNetwork(species, "NegFFL/NegFFLIncomplete")
+    species = loadNetwork("PosFFL/PosFFL")
+    saveNetwork(species, "PosFFL/PosFFL")
 
     return step, endTime, saveFile, speciesNames, species, concentrations, plotInfo

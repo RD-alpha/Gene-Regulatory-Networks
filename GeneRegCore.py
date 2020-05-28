@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 from config import *
 from GeneClass import *
 
-
 def simulate(stepSize, simLength, concs, species):
     # initialize simulation variables
     totalSteps = int(simLength / stepSize)
@@ -24,26 +23,23 @@ def simulate(stepSize, simLength, concs, species):
     return concHistory.T
 
 
-def graphSim(**kwargs):
-    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
+def graphSim(saveLoc, plotInfo):
+    fig, axes = plt.subplots(len(plotInfo), 1, sharex=True)
 
-    for gene in speciesList:
-        ax2.plot(times, concentrationHist[gene.speciesId])
-    ax2.legend(speciesNames[~signals])
+    for i in range(len(plotInfo)):
+        for speciesHistory in concentrationHist[plotInfo[i]]:
+            axes[i].plot(times, speciesHistory)
+        axes[i].legend(speciesNames[plotInfo[i]])
 
-    for signalHistory in concentrationHist[signals]:
-        ax1.plot(times, signalHistory)
-    ax1.legend(speciesNames[signals])
-
-    for key, value in kwargs.items():
-        if key == "save":
-            plt.savefig(value)
+    # save plot to saveLoc, path specified by user
+    if saveLoc != -1:
+        plt.savefig(saveLoc)
 
     plt.show()
 
 
-step, endTime, speciesNames, speciesList, concentrations, signals = setup()
+step, endTime, path, speciesNames, speciesList, concentrations, plotInfo = setup()
 concentrationHist = simulate(step, endTime, concentrations, speciesList)
 
 times = step * np.array(range(0, int(endTime / step)))
-graphSim()
+graphSim(path, plotInfo)

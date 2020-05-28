@@ -1,0 +1,95 @@
+[
+    {
+        "speciesName": "X",
+        "alpha": 0.03,
+        "speciesId": 1,
+        "logic": [
+            true
+        ],
+        "betas": [
+            0.4
+        ],
+        "operatorCount": 1,
+        "operatorLigands": [
+            0
+        ],
+        "thresholds": [
+            1
+        ],
+        "operatorStates": [
+            [
+                true
+            ]
+        ],
+        "hillsCoeff": [
+            2
+        ]
+    },
+    {
+        "speciesName": "Y",
+        "alpha": 0.02,
+        "speciesId": 2,
+        "logic": [
+            true
+        ],
+        "betas": [
+            0.2
+        ],
+        "operatorCount": 1,
+        "operatorLigands": [
+            1
+        ],
+        "thresholds": [
+            8
+        ],
+        "operatorStates": [
+            [
+                true
+            ]
+        ],
+        "hillsCoeff": [
+            2
+        ]
+    },
+    {
+        "speciesName": "Z",
+        "alpha": 0.03,
+        "speciesId": 3,
+        "logic": [
+            true,
+            true
+        ],
+        "betas": [
+            0.15,
+            0.15,
+            0.15
+        ],
+        "operatorCount": 2,
+        "operatorLigands": [
+            1,
+            2
+        ],
+        "thresholds": [
+            8,
+            7
+        ],
+        "operatorStates": [
+            [
+                true,
+                false
+            ],
+            [
+                false,
+                true
+            ],
+            [
+                true,
+                true
+            ]
+        ],
+        "hillsCoeff": [
+            8,
+            2
+        ]
+    }
+]

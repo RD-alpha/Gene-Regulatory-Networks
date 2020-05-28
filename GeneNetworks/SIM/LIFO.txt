@@ -1,0 +1,106 @@
+[
+    {
+        "operatorStates": [
+            [
+                true
+            ]
+        ],
+        "speciesId": 1,
+        "logic": [
+            true
+        ],
+        "speciesName": "X",
+        "operatorCount": 1,
+        "betas": [
+            0.1
+        ],
+        "hillsCoeff": [
+            2
+        ],
+        "alpha": 0.0075,
+        "thresholds": [
+            1
+        ],
+        "operatorLigands": [
+            0
+        ]
+    },
+    {
+        "operatorStates": [
+            [
+                true
+            ]
+        ],
+        "speciesId": 2,
+        "logic": [
+            true
+        ],
+        "speciesName": "Z1",
+        "operatorCount": 1,
+        "betas": [
+            0.2
+        ],
+        "hillsCoeff": [
+            2
+        ],
+        "alpha": 0.02,
+        "thresholds": [
+            5
+        ],
+        "operatorLigands": [
+            1
+        ]
+    },
+    {
+        "operatorStates": [
+            [
+                true
+            ]
+        ],
+        "speciesId": 3,
+        "logic": [
+            true
+        ],
+        "speciesName": "Z2",
+        "operatorCount": 1,
+        "betas": [
+            0.2
+        ],
+        "hillsCoeff": [
+            2
+        ],
+        "alpha": 0.02,
+        "thresholds": [
+            8
+        ],
+        "operatorLigands": [
+            1
+        ]
+    },
+    {
+        "operatorStates": [
+            [
+                true
+            ]
+        ],
+        "speciesId": 4,
+        "logic": [
+            true
+        ],
+        "speciesName": "Z3",
+        "operatorCount": 1,
+        "betas": [
+            0.2
+        ],
+        "hillsCoeff": [
+            2
+        ],
+        "alpha": 0.02,
+        "thresholds": [
+            10
+        ],
+        "operatorLigands": [
+            1
+        ]
+    }
+]
