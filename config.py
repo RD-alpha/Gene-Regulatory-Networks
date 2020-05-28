@@ -17,7 +17,20 @@ def event(t, systemState):
 
 
 def setup():
-    # speciesNames holds the labels of all genes
+    # --------------
+    # set up simulation parameters
+    # --------------
+
+    # step is the time advanced every timestep
+    # endTime is the time at which the simulation is finished
+    step = 0.1
+    endTime = 600
+
+    # -------------
+    # set up gene network
+    # -------------
+
+    # speciesNames holds the labels of all species
     # concentrations holds the concentrations of all substances at time 0
     speciesNames = np.array(["S", "X", "Y", "Z"])
     concentrations = np.array([0, 0, 0, 0])
@@ -25,12 +38,13 @@ def setup():
     # signals holds boolean of whether a species is a signal (True) or a gene product (False)
     signals = np.array([True, False, False, False])
 
-    # step is the time advanced every timestep
-    # endTime is the time at which the simulation is finished
-    step = 0.1
-    endTime = 600
-
+    #species is initialized here, it holds an array of all genes
     species = np.ndarray(3, dtype=np.object)
+
+    # genes are assigned to species
+    # species[n] = Gene() initializes an empty gene
+    # species[n] = Gene(filename="geneX.txt") loads from file /Genes/geneX.txt
+    # species[n].save("geneX.txt") saves gene to file /Genes/geneX.txt for later use
     species[0] = Gene(filename="geneX.txt")
     species[1] = Gene(filename="geneY.txt")
     species[2] = Gene(filename="geneZ.txt")
