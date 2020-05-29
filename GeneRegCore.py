@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from config import *
 from GeneClass import *
 
+
 def simulate(stepSize, simLength, concs, species):
     # initialize simulation variables
     totalSteps = int(simLength / stepSize)
@@ -26,10 +27,15 @@ def simulate(stepSize, simLength, concs, species):
 def graphSim(saveLoc, plotInfo):
     fig, axes = plt.subplots(len(plotInfo), 1, sharex=True)
 
-    for i in range(len(plotInfo)):
-        for speciesHistory in concentrationHist[plotInfo[i]]:
-            axes[i].plot(times, speciesHistory)
-        axes[i].legend(speciesNames[plotInfo[i]])
+    if len(plotInfo) > 1:
+        for i in range(len(plotInfo)):
+            for speciesHistory in concentrationHist[plotInfo[i]]:
+                axes[i].plot(times, speciesHistory)
+            axes[i].legend(speciesNames[plotInfo[i]])
+    else:
+        for speciesHistory in concentrationHist[plotInfo[0]]:
+            axes.plot(times, speciesHistory)
+        axes.legend(speciesNames[tuple(plotInfo)])
 
     # save plot to saveLoc, path specified by user
     if saveLoc != -1:

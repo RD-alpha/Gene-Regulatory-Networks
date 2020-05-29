@@ -1,0 +1,57 @@
+import numpy as np
+from GeneClass import *
+
+
+def event(t, systemState):
+    if t == 150:
+        systemState[0] = 1
+    elif t == 200:
+        systemState[0] = 0
+    elif t == 1300:
+        systemState[1] = 1
+    elif t == 1350:
+        systemState[1] = 0
+    elif t == 2200:
+        systemState[0] = 1
+    elif t == 2250:
+        systemState[0] = 0
+
+    return systemState
+
+
+def setup():
+    # --------------
+    # set up simulation parameters
+    # --------------
+
+    # step is the time advanced every timestep
+    # endTime is the time at which the simulation is finished
+    # save is the folder in which to save output image e.g. "Genes/NegFFL/NegFFL.png" set to -1 if no saving wanted
+    step = 0.1
+    endTime = 3000
+    saveFile = "GeneNetworks/Switch/OneNode.png"
+    plotInfo = [[0, 1], [2]]
+
+    # -------------
+    # set up gene network
+    # -------------
+
+    # speciesNames holds the labels of all species
+    # concentrations holds the concentrations of all substances at time 0
+    speciesNames = np.array(["Sx", "Sy", "Z"])
+    concentrations = np.array([0, 0, 1.5])
+
+    # species is initialized here, it holds an array of all genes, number is the amount of genes
+    species = np.full(3, None)
+
+    # genes are assigned to species
+    # species[n] = Gene() initializes an empty gene
+    # species[n].attribute = value will set the value of an attribute. The following must be set (refer to readme):
+    # speciesId, alpha, operatorLigands, thresholds, logic, hillsCoeff, operatorStates, betas
+    # species[n] = Gene(filename="geneX") loads from file /GeneNetworks/geneX.txt
+    # species[n].save("geneX") saves gene to file GeneNetworks/geneX for later use
+    # saveNetwork(species,"LIFO") will save any changes done to the network after loading to GeneNetworks/LIFO.txt
+    species = loadNetwork("Switch/OneNode")
+    saveNetwork(species, "Switch/OneNode")
+
+    return step, endTime, saveFile, speciesNames, species, concentrations, plotInfo
