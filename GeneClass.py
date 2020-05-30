@@ -10,7 +10,7 @@ def saveNetwork(geneList, path):
 
 
 def loadNetwork(path):
-    with open("GeneNetworks/" + path + ".txt") as json_file:
+    with open(path) as json_file:
         data = json.load(json_file)
         output = [None]*len(data)
         for i in range(len(data)):
@@ -20,6 +20,7 @@ def loadNetwork(path):
 
 class Gene:
     def __init__(self, **kwargs):
+        self.speciesName = None
         self.operatorLigands = None
         self.thresholds = None
         self.hillsCoeff = None
@@ -56,7 +57,7 @@ class Gene:
         return p if state else 1 - p
 
     def getDerivative(self, systemState):
-        rate = -self.alpha * systemState[self.speciesId]
+        rate = -self.alpha * systemState[(self.speciesId)]
 
         for h in range(len(self.operatorStates)):
             p = 1

@@ -1,7 +1,7 @@
 [
     {
         "speciesName": "X",
-        "alpha": 0.03,
+        "alpha": 0.04,
         "speciesId": 1,
         "logic": [
             true
@@ -91,5 +91,29 @@
             8,
             2
         ]
+    },
+    {
+        "speciesName": "A",
+        "operatorLigands": null,
+        "thresholds": null,
+        "hillsCoeff": null,
+        "alpha": 0.02,
+        "logic": null,
+        "speciesId": 3,
+        "operatorStates": null,
+        "betas": null,
+        "operatorCount": 2
+    },
+    {
+        "speciesName": "C",
+        "operatorLigands": null,
+        "thresholds": null,
+        "hillsCoeff": null,
+        "alpha": 0.4,
+        "logic": null,
+        "speciesId": 4,
+        "operatorStates": null,
+        "betas": null,
+        "operatorCount": 0
     }
 ]

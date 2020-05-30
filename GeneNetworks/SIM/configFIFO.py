@@ -48,7 +48,7 @@ def setup():
     # species[n] = Gene(filename="geneX") loads from file /GeneNetworks/geneX.txt
     # species[n].save("geneX") saves gene to file GeneNetworks/geneX for later use
     # saveNetwork(species,"LIFO") will save any changes done to the network after loading to GeneNetworks/LIFO.txt
-    species = loadNetwork("SIM/FIFO")
-    saveNetwork(species, "SIM/FIFO")
+    dir_path="SIM/FIFO"
+    species = loadNetwork(dir_path)
 
-    return step, endTime, saveFile, speciesNames, species, concentrations, plotInfo
+    return step, endTime, saveFile, dir_path, speciesNames, species, concentrations, plotInfo

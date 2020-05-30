@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 from config import *
 from GeneClass import *
 
-
 def simulate(stepSize, simLength, concs, species):
     # initialize simulation variables
     totalSteps = int(simLength / stepSize)
@@ -12,7 +11,6 @@ def simulate(stepSize, simLength, concs, species):
     for m in range(totalSteps):
         concHistory[m] = concs
         dconcs = np.zeros(len(concs))
-
         # select all species which are gene products and vary their concentration
         for gene in species:
             dconcs[gene.speciesId] = gene.getDerivative(concs)
@@ -24,7 +22,7 @@ def simulate(stepSize, simLength, concs, species):
     return concHistory.T
 
 
-def graphSim(saveLoc, plotInfo):
+def graphSim(saveLoc, plotInfo,concentrationHist,times,speciesNames):
     fig, axes = plt.subplots(len(plotInfo), 1, sharex=True)
 
     if len(plotInfo) > 1:
@@ -42,10 +40,3 @@ def graphSim(saveLoc, plotInfo):
         plt.savefig(saveLoc)
 
     plt.show()
-
-
-step, endTime, path, speciesNames, speciesList, concentrations, plotInfo = setup()
-concentrationHist = simulate(step, endTime, concentrations, speciesList)
-
-times = step * np.array(range(0, int(endTime / step)))
-graphSim(path, plotInfo)
